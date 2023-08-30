@@ -1,1 +1,2 @@
-pwd current directory
+pwd 
+ls
