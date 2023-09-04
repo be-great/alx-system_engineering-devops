@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type d -exec sh -c 'if [ "$(ls -A "$0")" == "" ]; then echo "${0##*/}"; fi' {} \; -o -type f -exec sh -c 'if [ ! -s "$0" ]; then echo "${0##*/}"; fi' {} \;
