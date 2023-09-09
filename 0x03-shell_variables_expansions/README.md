@@ -1,1 +1,9 @@
-Commands : printenv , set, unset,export,alias,unalias , . ,source ,printf 
+    printenv
+    set
+    unset
+    export
+    alias
+    unalias
+    .
+    source
+    printf
