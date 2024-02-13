@@ -12,16 +12,16 @@ Enter Password: You will be prompted to enter your password.
 
 2- Navigate to the Remote Directory:
 
-	$ cd /path/to/remote/directory
+	sftp> cd /path/to/remote/directory
 
 Use the cd command to navigate to the directory where you want to upload the files.
 
 3- Upload Files:
 
-	$ put *
+	sftp> put *
 
 4- Close the SFTP session:
 
-	$ exit
+	sftp> exit
 
 
