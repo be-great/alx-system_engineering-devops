@@ -1,5 +1,5 @@
 # alx-system_engineering-devops
-This is a repository for the alx system engineerign devops Tasks
+This is a repository for the Alx System Engineering DevOPs Tasks
 # Table of Contents
 [Concepts](#concepts)
    - [Basics](#basics)
