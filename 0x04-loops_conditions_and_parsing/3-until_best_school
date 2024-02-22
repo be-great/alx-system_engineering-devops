@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Bash script that displays Best School 10 times.
 count=1
 until [ $count -gt 10 ];do
