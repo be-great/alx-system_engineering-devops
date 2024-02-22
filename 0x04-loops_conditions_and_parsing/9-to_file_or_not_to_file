@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Bash script that gives you information about the school file.
 file_path="school"
-
 if [ -e "$file_path" ]; then
     echo "school file exists"
     
@@ -17,4 +16,3 @@ if [ -e "$file_path" ]; then
 else
     echo "school file does not exist"
 fi
-
