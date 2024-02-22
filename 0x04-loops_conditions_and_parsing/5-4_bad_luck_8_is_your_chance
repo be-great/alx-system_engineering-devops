@@ -5,6 +5,7 @@ Bash script that loops from 1 to 10
     displays good luck for the 8th loop iteration
     displays Best School for the other iterations
 '
+
 i=1
 while [ $i -le 10 ];do
 	if [ "$i" -eq 4 ];then
