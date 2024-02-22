@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#!/usr/bin/env bash
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkdwk/PoUsJtUQFLesO8sL1mNCwggaEFdjEjuNAp2X3XPpa8xLgU9uZmKtzqmVNx6Oiz0HVfJ1MuCK6EYrc3xkwo4ehCRbvoB7RHr1ywO5uDdDDwuyHAa9eYkZk7SoVg+8tkrMpcA5bjqtQruHFRdTXDc3mDaTdU+42kchlhuJnE/TTwvo/HsnPMXaUFQrttREvHt2apvYuQbHuzBuNjh7qIynEemw9gTp1+tStvz4/7dz507antSNI2Sfbu5SFHbmwDzg2ayQQwcQbgJKmTUbV4JF+V04p0yXyDiiNIp2P1zn3FidznPpvg/aqwhsW6+lFuBwEFqSeE1V9vz9tGjX Create a SSH RSA key pair
