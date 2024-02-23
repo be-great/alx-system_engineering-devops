@@ -13,7 +13,7 @@ termcmd()
     exit
 }
 trap 'termcmd' SIGQUIT SIGTERM 
-trap 'echo "I hate the kill command" && exit 1' SIGTERM 
+trap 'echo "I hate the kill command" && exit' SIGTERM 
 trap 'echo "Y U no love me?!"' SIGINT
 i=1
 while [ $i -le 2 ];do
