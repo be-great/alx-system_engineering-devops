@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# script display pid with process contian bash as bash only
+# example :- 
+#   4404 bash
+#   4555 bash
+pgrep -l bash
