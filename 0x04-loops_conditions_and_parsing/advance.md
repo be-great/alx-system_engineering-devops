@@ -40,3 +40,9 @@
     do
         echo "User:$f1:dir:$f7"
     done < /etc/passwd
+
+
+
+##  13. Let's parse Apache logs 
+
+    
