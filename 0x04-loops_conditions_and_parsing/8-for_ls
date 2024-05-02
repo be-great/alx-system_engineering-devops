@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# list current path files
-for file in *;do
-
-	cmd=$(echo "$file" | cut -d'-' -f2-)
-	echo "$cmd"
-
-
-done

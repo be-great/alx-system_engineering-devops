@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# bash script that grep the pid that have the word bash
-ps -auxf | grep bash
