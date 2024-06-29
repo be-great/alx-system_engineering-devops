@@ -1,4 +1,3 @@
-#!/usr/bin/pup
 # create a file in /tmp
 
 package { 'flask':
