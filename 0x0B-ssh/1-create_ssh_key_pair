@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Connect to the server using the private key
-ssh-keygen -b 4096 -f school -N betty
+ssh-keygen -f school -b 4096 -N betty
 
