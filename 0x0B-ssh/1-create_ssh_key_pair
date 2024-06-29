@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Connect to the server using the private key
-ssh-keygen -t rsa -b 4096 -f ~/school -N "betty"
+ssh-keygen -t rsa -b 4096 -f ~/school -N betty
+
