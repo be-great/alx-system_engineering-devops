@@ -1,0 +1,4 @@
+# Your machine has an SSH configuration
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
