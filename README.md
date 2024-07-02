@@ -13,6 +13,6 @@ This is a repository for the System Engineering DevOPs Tasks
      - [0x07-networking_basics](0x07-networking_basics/README.md)
      - [0x08-networking_basics_2](0x08-networking_basics_2/README.md)
      - [0x09-web_infrastructure_design](0x09-web_infrastructure_design/README.md)
-     - [0x0A-configuration_management](0x0A-configuration_management/README.md)
+     - [0x0A-configuration_management](0x0A-configuration_management/README.md)mv
      - [0x0B-ssh](0x0B-ssh/README.md)
      - [Command Line for The Win](command_line_for_the_win/README.md)
