@@ -1,2 +1,11 @@
 #!/usr/bin/env bash
 # resetarting apaches server
+apt-get update
+apt-get install -y nginx
+
+# Create a custom index.html
+echo "Hello World!" > /var/www/html/index.html
+sudo sed -i '46i rewrite ^/redirect_me https://github.com/ permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo sed -i '46i error_page 404 /404.html' /etc/nginx/sites-available/default
+sudo service apache2 start
