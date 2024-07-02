@@ -5,30 +5,4 @@ apt-get install -y nginx
 
 # Create a custom index.html
 echo "Hello World!" > /var/www/html/index.html
-
-# Modify the Nginx default server block to ensure it serves the custom index.html
-cat > /etc/nginx/sites-available/default << EOF
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index index.html index.htm;
-
-    server_name _;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-EOF
-
-# Restart Nginx to apply changes
-nginx -s reload
-
-# Confirm Nginx is listening on port 80 and serving the correct content
-if curl -s http://localhost/ | grep -q "Hello World!"; then
-    echo "Nginx has been configured successfully."
-else
-    echo "Nginx configuration failed."
-fi
+sudo service apache2 start
