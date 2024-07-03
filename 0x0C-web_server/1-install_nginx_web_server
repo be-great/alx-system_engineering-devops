@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# resetarting apaches server
+# resetarting Nginx server
 sudo apt-get -y update
 sudo apt-get install -y nginx
 # sudo ufw allow "Nginx HTTP"
