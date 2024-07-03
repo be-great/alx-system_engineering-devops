@@ -2,7 +2,6 @@
 # resetarting apaches server
 sudo apt-get -y update
 sudo apt-get install -y nginx
-
 # Create a custom index.html
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sudo service nginx start
