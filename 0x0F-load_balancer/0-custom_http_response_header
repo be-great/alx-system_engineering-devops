@@ -2,7 +2,8 @@
 # 0. Double the number of webservers 
 sudo apt-get update
 sudo apt-get install -y nginx
-
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 # modify the nginz default configuration
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://github.com/ permanent;' /etc/nginx/sites-available/default
 sudo sed -i '/^\s*server\s*{/a \\n\tlocation \/ {\n\t\tadd_header X-Served-By $hostname;\n\t}}\n' /etc/nginx/sites-available/default
 sudo service nginx restart
