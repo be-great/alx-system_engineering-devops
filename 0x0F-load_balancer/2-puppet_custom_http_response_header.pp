@@ -12,9 +12,10 @@ exec { 'install nginx':
 }
 
 exec { 'nginx config':
-  provider => shell,
-  command  => 'printf "%s\n\tadd_header X-Served-By \\"$HOST\\";" "$(grep -v "add_header X-Served-By" /etc/nginx/nginx.conf)" > /tmp/nginx.conf && sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf',
-  before   => Exec['restart nginx'],
+  provider     => shell,
+  environment  => ["host=${hostname}"],
+  command      => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$host\";/" /etc/nginx/nginx.conf',
+  before       => Exec['restart nginx'],
 }
 
 exec { 'restart nginx':
