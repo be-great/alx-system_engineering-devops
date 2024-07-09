@@ -5,7 +5,22 @@ apt-get install -y nginx
 
 # Create a custom index.html
 echo "Hello World!" > /var/www/html/index.html
-sudo sed -i '46i rewrite ^/redirect_me https://github.com/ permanent;' /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-sudo sed -i '46i error_page 404 /404.html' /etc/nginx/sites-available/default
+# Write the new Nginx configuration using tee
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root   /var/www/html;
+    index  index.html index.htm;
+
+    location /redirect_me {
+        return 301 http://github.com/;
+    }
+
+    error_page 404 /404.html;
+    location /404 {
+      root /var/www/html;
+      internal;
+    }
+}" > /etc/nginx/sites-available/default
 sudo service nginx start
