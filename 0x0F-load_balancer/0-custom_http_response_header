@@ -15,7 +15,7 @@ printf %s "server {
     listen [::]:80 default_server;
     add_header X-Served-By $HOSTNAME;
     root   /var/www/html;
-    index  index.html index.htm;
+    index  index.nginx-debian.html index.nginx-debian.htm;
 
     location /redirect_me {
         return 301 http://github.com/;
