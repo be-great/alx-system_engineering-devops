@@ -13,7 +13,7 @@ echo "Ceci n'est pas une page" > /var/www/html/404.html
 printf %s "server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    add_header X-Served-By \$HOSTNAME;
+    add_header X-Served-By $HOSTNAME;
     root   /var/www/html;
     index  index.html index.htm;
 
@@ -26,7 +26,7 @@ printf %s "server {
       root /var/www/html;
       internal;
     }
-}" | sudo tee /etc/nginx/sites-available/default > /dev/null
+}" > /etc/nginx/sites-available/default
 
 # Check Nginx configuration for syntax errors
 sudo service nginx restart
