@@ -18,7 +18,7 @@ printf %s "server {
     index  index.html index.htm;
 
     location /redirect_me {
-        return 301 http://cuberule.com/;
+        return 301 http://github.com/;
     }
 
     error_page 404 /404.html;
@@ -29,8 +29,4 @@ printf %s "server {
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
 
 # Check Nginx configuration for syntax errors
-if sudo nginx -t; then
-    sudo systemctl restart nginx
-else
-    echo "Nginx configuration is invalid."
-fi
+sudo service nginx restart
