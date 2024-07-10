@@ -2,7 +2,7 @@
 # task 0
 printf %s "
 server {
-        listen 80;
+    listen 80;
 }
 " > /etc/nginx/sites-available/default
 service nginx restart
