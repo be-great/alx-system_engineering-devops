@@ -1,0 +1,38 @@
+#!/bin/bash
+# Function to get DNS information
+
+get_dns_info() {
+    local domain=$1
+    local subdomain=$2
+
+    # Get the full domain
+    full_domain="${subdomain}.${domain}"
+
+    # Get the DNS record type and destination
+    dns_info=$(dig +short "$full_domain")
+
+    if [ -z "$dns_info" ]; then
+        echo "The subdomain ${subdomain} does not exist."
+        return
+    fi
+
+    echo "The subdomain ${subdomain} is an A record and points to ${dns_info}"
+}
+
+# Main script
+domain=$1
+subdomain=$2
+
+if [ -z "$domain" ]; then
+    echo "Usage: $0 domain [subdomain]"
+    exit 1
+fi
+
+if [ -z "$subdomain" ]; then
+    subdomains=("www" "lb-01" "web-01" "web-02")
+    for sub in "${subdomains[@]}"; do
+        get_dns_info "$domain" "$sub"
+    done
+else
+    get_dns_info "$domain" "$subdomain"
+fi
