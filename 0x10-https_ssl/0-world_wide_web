@@ -7,7 +7,7 @@ info() {
 
 if [ "$#" -eq 2 ]; then
     info "$2.$1" "$2"
-    exit(0)
+    exit 0
 fi
 
 info "www.$1" "www"
