@@ -8,6 +8,22 @@ Create a certificate using certbot and configure HAproxy to accept encrypted tra
 
 
 ### Task 0
+- Add the subdomain www to your domain, point it to your lb-01 IP (your domain name might be configured with default subdomains, feel free to remove them)
+- Add the subdomain lb-01 to your domain, point it to your lb-01 IP
+- Add the subdomain web-01 to your domain, point it to your web-01 IP
+- Add the subdomain web-02 to your domain, point it to your web-02 IP
+<img src="task0.png"></img>
+
+```bash
+# To get DNS Query we use 
+dig google.com
+# pass argument.
+info() {
+    echo $1  $2
+}
+info "string1: $1 , string2: $2"
+# 
+```
 
 ### Task 1
 ```bash
@@ -23,3 +39,6 @@ DOMAIN='example.com' sudo -E bash -c 'cat /etc/letsencrypt/live/$DOMAIN/fullchai
 sudo chmod -R go-rwx /etc/haproxy/certs
 sudo nano /etc/haproxy/haproxy.cfg
 ```
+
+### Task 3
+- The same as the previous one.
