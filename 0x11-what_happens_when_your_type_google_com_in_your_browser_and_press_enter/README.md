@@ -29,8 +29,7 @@ a Load balancer distributes network or application traffic across multiple serve
 ```bash
 sudo apt install apache2-utils
 # Runs the Apache Benchmark command with 100 requests and a concurrency of 10.
- Runs the Apache Benchmark command with 100 requests and a concurrency of 10.
- ab -n 100 -c 10 https://www.google.com/ | grep -E "Complete requests|Failed requests|Total transferred|HTML transferred|Requests per second|Time per request|Transfer rate"
+ab -n 100 -c 10 https://www.google.com/ | grep -E "Complete requests|Failed requests|Total transferred|HTML transferred|Requests per second|Time per request|Transfer rate"
 ```
 # Web server
 - handles http requests and serves web content
