@@ -3,5 +3,7 @@
 chmod 644 /etc/nginx/nginx.conf
 sed -i '1iuser nginx;' /etc/nginx/nginx.conf
 sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
+# kill the apaches server
 pkill apache2
+# reset the nginx server
 su nginx -s /bin/bash -c 'service nginx restart'
