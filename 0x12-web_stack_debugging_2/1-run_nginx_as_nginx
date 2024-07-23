@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# running as nginx user, listening on 8080
 chmod 644 /etc/nginx/nginx.conf
 sed -i '1iuser nginx;' /etc/nginx/nginx.conf
 sed -i 's/listen 80 default_server;/listen 8080 default_server;/g' /etc/nginx/sites-available/default
