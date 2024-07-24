@@ -1,0 +1,7 @@
+#!/bin/bash
+# slave
+pass="1234"
+backup_file="backup.sql"
+archive="$(date + '%d-%m-%Y').tar.gz"
+mysqldump -u root -p"$pass" --all-databases > "$backup_file"
+tar -czvf "$archive" "$backup_file"
