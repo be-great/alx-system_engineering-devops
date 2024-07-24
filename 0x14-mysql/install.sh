@@ -1,3 +1,4 @@
+#!/bin/bash
 # go to the https://dev.mysql.com/doc/refman/5.7/en/checking-gpg-signature.html
 # and copy the gpg to the sign.key
 sudo apt-key add sign.key

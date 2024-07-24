@@ -1,3 +1,7 @@
+#!/bin/bash
+sudo ufw disable
+configure=\
+"
 # Copyright (c) 2014, 2023, Oracle and/or its affiliates.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -38,3 +42,7 @@ log-error       = /var/log/mysql/error.log
 bind-address    = 127.0.0.1
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
+"
+
+echo "$configure" | sudo dd status=none of=/etc/mysql/mysql.conf.d/mysqld.cnf
+echo "Done"

@@ -1,3 +1,7 @@
+#!/bin/bash
+sudo ufw disable
+configure=\
+"
 # Copyright (c) 2014, 2023, Oracle and/or its affiliates.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -29,7 +33,7 @@
 [mysqld]
 binlog_do_db    = tyrell_corp
 log_bin         = /var/log/mysql/mysql-bin.log
-server-id       = 2
+server-id       = 1
 pid-file        = /var/run/mysqld/mysqld.pid
 socket          = /var/run/mysqld/mysqld.sock
 datadir         = /var/lib/mysql
@@ -38,3 +42,10 @@ log-error       = /var/log/mysql/error.log
 bind-address    = 127.0.0.1
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
+"
+# after restart the mysql will create the log bin file 
+# to see it: $ mysql -u root -p
+#            > show master status;
+sudo systemctl restart mysql
+echo "$configure" | sudo dd status=none of=/etc/mysql/mysql.conf.d/mysqld.cnf
+echo "Done"
