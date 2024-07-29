@@ -27,21 +27,14 @@ def get_employee_data(employee_id):
 def export_to_csv(employee_id, user_name, todos_data):
     """Export the todo data to a CSV file."""
     filename = f'{employee_id}.csv'
-    with open(filename, mode='w', newline='') as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open(filename, mode='w') as file:
         for task in todos_data:
-            writer.writerow([employee_id,
-                             user_name,
-                             task['completed'],
-                             task['title']])
+            complete = task.get('completed')
+            title = task.get('title')
+            file.write('"{}","{}","{}","{}"\n'.format(
+                employee_id, user_name, complete, title))
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        sys.exit(1)
-
-    if not re.fullmatch(r'\d+', sys.argv[1]):
-        sys.exit(1)
-
     employee_id = int(sys.argv[1])
     get_employee_data(employee_id)
