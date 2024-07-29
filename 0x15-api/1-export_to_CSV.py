@@ -14,13 +14,9 @@ URL = "https://jsonplaceholder.typicode.com"
 def get_employee_data(employee_id):
     """Fetch employee and todo data from API."""
     user_url = f'{URL}/users/{employee_id}'
-    todos_url = f'{URL}/todos?userId={employee_id}'
-
+    todos_url = f'{URL}/users/{employee_id}/todos'
     user_resp = requests.get(user_url)
     todos_resp = requests.get(todos_url)
-
-    if user_resp.status_code != 200 or todos_resp.status_code != 200:
-        return None
 
     user_data = user_resp.json()
     todos_data = todos_resp.json()
