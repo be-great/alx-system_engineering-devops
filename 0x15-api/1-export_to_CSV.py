@@ -1,64 +1,24 @@
-#!/usr/bin/python3#!/usr/bin/python3
-'''
-1. Export to CSV
-'''
-
+#!/usr/bin/python3
+""" Export api to csv"""
 import csv
-import re
 import requests
 import sys
 
-URL = "https://jsonplaceholder.typicode.com"
-
-
-def get_employee_data(employee_id):
-    """Fetch employee and todo data from API."""
-    user_url = f'{URL}/users/{employee_id}'
-    todos_url = f'{URL}/todos?userId={employee_id}'
-
-    user_resp = requests.get(user_url)
-    todos_resp = requests.get(todos_url)
-
-    if user_resp.status_code != 200 or todos_resp.status_code != 200:
-        return None
-
-    user_data = user_resp.json()
-    todos_data = todos_resp.json()
-
-    return user_data, todos_data
-
-
-def display_todo_progress(employee_id):
-    """Display the todo progress of the employee."""
-    data = get_employee_data(employee_id)
-    if data is None:
-        return
-
-    user_data, todos_data = data
-    user_name = user_data.get('name')
-    total_tasks = len(todos_data)
-    done_tasks = [task for task in todos_data if task.get('completed')]
-    number_of_done_tasks = len(done_tasks)
-    export_to_csv(employee_id, user_name, todos_data)
-
-
-def export_to_csv(employee_id, user_name, todos_data):
-    """Export the todo data to a CSV file."""
-    filename = f'{employee_id}.csv'
-    with open(filename, 'w') as file:
-        for task in todos_data:
-            completed = task.get('completed')
-            title = task.get('title')
-            file.write('"{}","{}","{}","{}"\n'.format(
-                employee_id, user_name, completed, title))
-
-
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        sys.exit(1)
+    user = sys.argv[1]
+    url_user = 'https://jsonplaceholder.typicode.com/users/' + user
+    res = requests.get(url_user)
+    """ANYTHING"""
+    user_name = res.json().get('username')
+    task = url_user + '/todos'
+    res = requests.get(task)
+    tasks = res.json()
 
-    if not re.fullmatch(r'\d+', sys.argv[1]):
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    display_todo_progress(employee_id)
+    with open('{}.csv'.format(user), 'w') as csvfile:
+        for task in tasks:
+            completed = task.get('completed')
+            """Complete"""
+            title_task = task.get('title')
+            """Done"""
+            csvfile.write('"{}","{}","{}","{}"\n'.format(
+                user, user_name, completed, title_task))
