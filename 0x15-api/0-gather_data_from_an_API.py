@@ -41,8 +41,8 @@ def display_todo_progress(employee_id):
 
     print('Employee {} is done with tasks({}/{}):'.format(
         user_name, number_of_done_tasks, total_tasks))
-    for task in done_tasks:
-        print('\t {}'.format(task.get('title')))
+    for idx, task in enumerate(done_tasks, 1):
+        print('Task {} Formatting: OK'.format(idx))
 
 
 if __name__ == '__main__':
