@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Gather employee data from an API and display their todo progress.
+0. Gather data from an API
 '''
 
 import re
