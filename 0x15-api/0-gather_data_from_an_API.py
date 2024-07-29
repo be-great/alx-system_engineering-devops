@@ -8,12 +8,27 @@ import requests
 import sys
 
 
-if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
-    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        if re.fullmatch(r'\d+', sys.argv[1]):
+            URL = "https://jsonplaceholder.typicode.com/"
+            employee_id = int(sys.argv[1])
+            user_url = f'{URL}users/{employee_id}'
+            todo_url = f'{URL}todos?userId={employee_id}'
+            user_data = requests.get(user_url).json()
+            todo_data = requests.get(todo_url).json()
+            name = user_data.get('name')
+            tasks = list(filter(lambda x: x.get('userId') == employee_id,
+                                todo_data))
+            done_tasks = list(filter(lambda x: x.get('completed'), tasks))
+            print(
+                'Employee {} is done with tasks({}/{}):'.format(
+                    name,
+                    len(done_tasks),
+                    len(tasks),
+                )
+            )
 
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(todos)))
-    [print("\t {}".format(c)) for c in completed]
+            if len(done_tasks) > 0:
+                for task in done_tasks:
+                    print('\t {}'.format(task.get('title')))
