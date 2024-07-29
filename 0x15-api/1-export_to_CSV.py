@@ -4,7 +4,6 @@
 '''
 
 import csv
-import re
 import requests
 import sys
 
@@ -23,13 +22,12 @@ def export_to_csv(employee_id, user_name, todos_data):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        employee_id = int(sys.argv[1])
-        user_url = f'{URL}/{employee_id}'
-        todos_url = f'{URL}/{employee_id}/todos'
-        user_resp = requests.get(user_url)
-        todos_resp = requests.get(todos_url)
-
-        user_name = user_resp.json().get('name')
-        todos_data = todos_resp.json()
-        export_to_csv(employee_id, user_name, todos_data)
+    employee_id = sys.argv[1]
+    url_user = 'https://jsonplaceholder.typicode.com/users/' + employee_id
+    res = requests.get(url_user)
+    """ANYTHING"""
+    user_name = res.json().get('username')
+    task = url_user + '/todos'
+    res = requests.get(task)
+    todos_data = res.json()
+    export_to_csv(employee_id, user_name, todos_data)
