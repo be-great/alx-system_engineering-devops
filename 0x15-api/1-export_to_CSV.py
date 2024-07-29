@@ -8,20 +8,7 @@ import re
 import requests
 import sys
 
-URL = "https://jsonplaceholder.typicode.com"
-
-
-def get_employee_data(employee_id):
-    """Fetch employee and todo data from API."""
-    user_url = f'{URL}/users/{employee_id}'
-    todos_url = f'{URL}/users/{employee_id}/todos'
-    user_resp = requests.get(user_url)
-    todos_resp = requests.get(todos_url)
-
-    user_data = user_resp.json()
-    todos_data = todos_resp.json()
-    user_name = user_data.get('name')
-    export_to_csv(employee_id, user_name, todos_data)
+URL = "https://jsonplaceholder.typicode.com/users"
 
 
 def export_to_csv(employee_id, user_name, todos_data):
@@ -36,11 +23,13 @@ def export_to_csv(employee_id, user_name, todos_data):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        sys.exit(1)
+    if len(sys.argv) > 1:
+        employee_id = int(sys.argv[1])
+        user_url = f'{URL}/{employee_id}'
+        todos_url = f'{URL}/{employee_id}/todos'
+        user_resp = requests.get(user_url)
+        todos_resp = requests.get(todos_url)
 
-    if not re.fullmatch(r'\d+', sys.argv[1]):
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    get_employee_data(employee_id)
+        user_name = user_resp.json().get('name')
+        todos_data = todos_resp.json()
+        export_to_csv(employee_id, user_name, todos_data)
