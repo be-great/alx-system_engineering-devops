@@ -45,13 +45,12 @@ def display_todo_progress(employee_id):
 def export_to_csv(employee_id, user_name, todos_data):
     """Export the todo data to a CSV file."""
     filename = f'{employee_id}.csv'
-    with open(filename, mode='w', newline='') as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open(filename, 'w') as file:
         for task in todos_data:
-            writer.writerow([employee_id,
-                             user_name,
-                             task['completed'],
-                             task['title']])
+            completed = task.get('completed')
+            title = task.get('title')
+            file.write('"{}","{}","{}","{}"\n'.format(
+                employee_id, user_name, completed, title))
 
 
 if __name__ == '__main__':
