@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
- 2. Export to JSON 
+ 2. Export to JSON
 """
 
 import json
