@@ -1,16 +1,20 @@
 #!/usr/bin/python3
-""" 0. Gather data from an API """
-import sys
+'''
+Gather employee data from an API and display their todo progress.
+'''
+
+import re
 import requests
+import sys
+
+REST_API = "https://jsonplaceholder.typicode.com"
 
 
 def get_employee_data(employee_id):
-    """Get employee data."""
-    s0 = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
-    s1 = 'https://jsonplaceholder.typicode.com/'
-    s2 = s1 + f'todos?userId={employee_id}'
-    user_url = s0
-    todos_url = s2
+    """Fetch employee and todo data from API."""
+    user_url = f'{REST_API}/users/{employee_id}'
+    todos_url = f'{REST_API}/todos?userId={employee_id}'
+
     user_resp = requests.get(user_url)
     todos_resp = requests.get(todos_url)
 
@@ -24,7 +28,7 @@ def get_employee_data(employee_id):
 
 
 def display_todo_progress(employee_id):
-    """Display the data."""
+    """Display the todo progress of the employee."""
     data = get_employee_data(employee_id)
     if data is None:
         return
@@ -35,24 +39,18 @@ def display_todo_progress(employee_id):
     done_tasks = [task for task in todos_data if task.get('completed')]
     number_of_done_tasks = len(done_tasks)
 
-    print('Employee {} is done with tasks({}/{})'
-          .format(user_name,
-                  number_of_done_tasks,
-                  total_tasks))
+    print('Employee {} is done with tasks({}/{}):'.format(
+        user_name, number_of_done_tasks, total_tasks))
     for task in done_tasks:
-        print(f"\t {task.get('title')}")
+        print('\t {}'.format(task.get('title')))
 
 
-if __name__ == "__main__":
-    """The starting point of the script."""
+if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python 0-gather_data_from_an_API.py <employee_id>")
         sys.exit(1)
 
-    try:
-        employee_id = int(sys.argv[1])
-    except ValueError:
-        print("Please provide a valid integer as employee ID")
+    if not re.fullmatch(r'\d+', sys.argv[1]):
         sys.exit(1)
 
+    employee_id = int(sys.argv[1])
     display_todo_progress(employee_id)
