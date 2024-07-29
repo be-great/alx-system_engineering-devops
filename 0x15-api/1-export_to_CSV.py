@@ -12,13 +12,14 @@ URL = "https://jsonplaceholder.typicode.com/users"
 
 def export_to_csv(employee_id, user_name, todos_data):
     """Export the todo data to a CSV file."""
-    filename = f'{employee_id}.csv'
-    with open(filename, 'w') as file:
+    with open('{}.csv'.format(employee_id), 'w') as csvfile:
         for task in todos_data:
             completed = task.get('completed')
-            title = task.get('title')
-            file.write('"{}","{}","{}","{}"\n'.format(
-                employee_id, user_name, completed, title))
+            """Complete"""
+            title_task = task.get('title')
+            """Done"""
+            csvfile.write('"{}","{}","{}","{}"\n'.format(
+                employee_id, user_name, completed, title_task))
 
 
 if __name__ == '__main__':
