@@ -4,7 +4,6 @@
 """
 
 import csv
-import re
 import requests
 import sys
 
@@ -20,7 +19,7 @@ def get_employee_data(employee_id):
     todos_resp = requests.get(todos_url)
     user_data = user_resp.json()
     todos_data = todos_resp.json()
-    user_name = user_data.get('name')
+    user_name = user_data.get('username')
     export_to_csv(employee_id, user_name, todos_data)
 
 
