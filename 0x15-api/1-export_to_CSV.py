@@ -39,11 +39,6 @@ def display_todo_progress(employee_id):
     total_tasks = len(todos_data)
     done_tasks = [task for task in todos_data if task.get('completed')]
     number_of_done_tasks = len(done_tasks)
-
-    print('Employee {} is done with tasks({}/{}):'.format(
-        user_name, number_of_done_tasks, total_tasks))
-    for task in done_tasks:
-        print('\t {}'.format(task.get('title')))
     export_to_csv(employee_id, user_name, todos_data)
 
 
