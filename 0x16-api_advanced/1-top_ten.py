@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Top Ten
 function that queries the Reddit API

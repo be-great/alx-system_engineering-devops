@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 How many subs
 nd returns the number of subscribers for a given subreddit
