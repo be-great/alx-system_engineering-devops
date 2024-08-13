@@ -18,6 +18,8 @@ def top_ten(subreddit):
         result = data['data']['children']
         i = 0
         for post in result:
+            if i > 8:
+                return
             print(result[i]['data']['title'])
             i += 1
     else:
