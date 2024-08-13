@@ -1,19 +1,22 @@
 #!/usr/bin/python3
 """
-Script that queries subscribers on a given Reddit subreddit.
+How many subs
+nd returns the number of subscribers for a given subreddit
 """
-
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """Return the total number of subscribers on a given subreddit."""
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    """
+    return the number of subscribers
+    """
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
+    resp = requests.get(url, headers=headers, allow_redirects=False)
+
+    if resp.status_code == 200:
+        data = resp.json()
+        result = data['data']['subscribers']
+        return (result)
     else:
-        return 0
+        return (0)
