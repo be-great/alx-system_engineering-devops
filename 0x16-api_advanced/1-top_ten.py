@@ -17,6 +17,6 @@ def top_ten(subreddit):
         data = resp.json()
         result = data['data']['children']
         for post in result:
-            print(result)
+            print(result['data']['title'])
     else:
         print(None)
