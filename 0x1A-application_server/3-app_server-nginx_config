@@ -1,0 +1,35 @@
+server {
+    listen 80 default_server;
+
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+    add_header X-Served-By \$hostname;
+    location /hbnb_static { 
+        alias /data/web_static/current/;
+    }
+
+    location /airbnb-onepage {
+        proxy_pass http://0.0.0.0:5000/airbnb-onepage;
+    }
+    # ~ = If a tilde modifier is present, this location will be
+    # interpreted as a case-sensitive regular expression match.
+    # ^ = starting from the beginning of the URI.
+    # \$1 = for capture the group in the location.
+    location ~ ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ {
+        proxy_pass http://localhost:5001/number_odd_or_even/\$1;
+    }
+
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    if ($request_filename ~ redirect_me){
+        rewrite ^ https://th3-gr00t.tk/ permanent;
+    }
+    error_page 404 /error_404.html;
+    location = /error_404.html {
+        internal;
+    }
+}
