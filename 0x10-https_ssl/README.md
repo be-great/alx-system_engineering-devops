@@ -5,6 +5,14 @@ Configure your domain zone so that the subdomain www points to your load-balance
 “Terminating SSL on HAproxy” means that HAproxy is configured to handle encrypted traffic, unencrypt it and pass it on to its destination.
 
 Create a certificate using certbot and configure HAproxy to accept encrypted traffic for your subdomain www.
+### The idea
+<img src="img/ssl_backend.png">
+<br>
+
+```bash
+sudo cat /etc/haproxy/haproxy.cfg
+```
+<img src="img/2.png">
 
 
 ### Task 0
@@ -13,7 +21,6 @@ Create a certificate using certbot and configure HAproxy to accept encrypted tra
 - Add the subdomain web-01 to your domain, point it to your web-01 IP
 - Add the subdomain web-02 to your domain, point it to your web-02 IP
 <img src="task0.png"></img>
-
 ```bash
 # To get DNS Query we use 
 dig google.com
