@@ -8,6 +8,7 @@
 sudo pip install -r requirements.txt
 sudo nano /etc/systemd/system/medifycare.service
 ```
+```txt
 [Unit]
 Description=Gunicorn instance to serve my_flask_app
 After=network.target
@@ -25,7 +26,7 @@ ExecStart=/usr/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
 
 [Install]
 WantedBy=multi-user.target
-
+```
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl restart medifycare
@@ -34,6 +35,7 @@ sudo systemctl status medifycare
 ```bash
 sudo nano /etc/nginx/sites-enabled/default
 ```
+```txt
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -58,7 +60,7 @@ server {
       internal;
     }
 }
-
+```
 ```bash
 sudo systemctl restart nginx
 ```
